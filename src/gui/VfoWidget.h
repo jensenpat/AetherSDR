@@ -215,6 +215,9 @@ private:
     void showTab(int index);
     void closeActiveTab();  // close any open DSP/Mode/... tab panel
     void updateFreqLabel();
+    // Shrink the frequency digits to fit the flag's fixed box so the leading
+    // digits never clip (#3463/#3515). Re-run on text/theme/resize changes.
+    void applyFreqFit();
     bool cancelDirectEntry();
     void updateFilterLabel();
     void updateModeTab();
@@ -282,6 +285,7 @@ private:
 
     // Frequency / meter
     QLabel* m_freqLabel{nullptr};
+    int     m_freqFitPx{-1};  // last applied freq font px (skip restyle if unchanged)
     QLineEdit* m_freqEdit{nullptr};
     QStackedWidget* m_freqStack{nullptr};
     QLabel* m_dbmLabel{nullptr};

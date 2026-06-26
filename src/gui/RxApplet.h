@@ -166,6 +166,9 @@ private:
     void updateAntennaButton(QPushButton* button, const QString& token, bool tx);
     void updateAntennaButtons();
     void updateFreqLabel();
+    // Shrink the frequency digits to fit the RX Controls box so the leading
+    // digits never clip in the fixed-width applet column (#3463/#3515).
+    void applyFreqFit();
     QStringList txAntennaOptions() const;
     QString antennaMenuLabel(const QString& token, const QStringList& options) const;
 
@@ -218,7 +221,7 @@ private:
     QPushButton* m_lockBtn{nullptr};      // tune-lock toggle
     QPushButton* m_rxAntBtn{nullptr};     // RX antenna dropdown (blue)
     QPushButton* m_txAntBtn{nullptr};     // TX antenna dropdown (red)
-    QLabel*      m_filterWidthLbl{nullptr}; // current filter width e.g. "2.7K"
+    int          m_freqFitPx{-1};          // last applied freq font px (skip restyle if unchanged)
     QPushButton* m_qskBtn{nullptr};       // QSK toggle
     QHBoxLayout* m_freqRow{nullptr};       // frequency display row
     QPushButton* m_txBadge{nullptr};       // TX slice indicator (click to set as TX slice)
