@@ -53,6 +53,24 @@ void DaxApplet::buildUI()
 
     auto& settings = AppSettings::instance();
 
+#ifdef Q_OS_WIN
+    // DAX virtual audio needs a kernel-mode audio driver, which AetherSDR ships
+    // only on macOS and Linux — the daxToggled → startDax() wiring is compiled
+    // out on Windows (MainWindow_Session.cpp). Without this note the controls
+    // below look functional but silently do nothing, which is exactly what
+    // confused the reporter of #4112. Surface an honest, Windows-only pointer to
+    // TCI. Gated on Q_OS_WIN so it never appears on macOS/Linux, where DAX works.
+    auto* winNote = new QLabel(
+        tr("DAX virtual audio is not available on Windows.\n"
+           "Use TCI for WSJT-X/JTDX — see Help → Configuring Data Modes."));
+    winNote->setObjectName(QStringLiteral("daxWindowsNote"));
+    winNote->setAccessibleName(tr("DAX unavailable on Windows"));
+    winNote->setWordWrap(true);
+    winNote->setStyleSheet(
+        "QLabel { color: #d0a040; font-size: 11px; padding: 4px 6px; }");
+    outer->addWidget(winNote);
+#endif
+
     // DAX enable row
     auto* daxEnRow = new QHBoxLayout;
     daxEnRow->setContentsMargins(4, 2, 4, 2);
@@ -147,6 +165,21 @@ void DaxApplet::buildUI()
 
     outer->addLayout(txRow);
     outer->addLayout(daxEnRow);
+
+#ifdef Q_OS_WIN
+    // No Windows DAX driver (#4112): the Enable button and gain meters can't
+    // route audio anywhere, so disable them rather than silently no-op. The
+    // Windows-only note above explains the TCI alternative.
+    m_daxEnable->setEnabled(false);
+    m_daxEnable->setToolTip(
+        tr("DAX virtual audio is not available on Windows. Use TCI instead."));
+    for (auto* m : m_daxRxMeter) {
+        if (m) m->setEnabled(false);
+    }
+    if (m_daxTxMeter) {
+        m_daxTxMeter->setEnabled(false);
+    }
+#endif
 }
 
 void DaxApplet::setRadioModel(RadioModel* model)
