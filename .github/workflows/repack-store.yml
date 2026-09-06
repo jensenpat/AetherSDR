@@ -1,0 +1,67 @@
+name: Repackage v26.9.2 Store upload
+on:
+  push:
+    branches: [aether/repack-v26.9.2-store]
+    paths: [.github/repack/**, .github/workflows/repack-store.yml]
+permissions:
+  contents: read
+jobs:
+  repackage:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Download and verify original release package
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v26.9.2 --repo aethersdr/AetherSDR --pattern AetherSDR-26.9.205.0-Windows-x64.msixupload --dir original
+          if ($LASTEXITCODE) { throw 'Download failed' }
+          $file = 'original/AetherSDR-26.9.205.0-Windows-x64.msixupload'
+          if ((Get-FileHash $file -Algorithm SHA256).Hash.ToLower() -ne '872e2436c47c850adef7c38e9efc0e01e4878a31cb5aafa26db40e4e58bcd138') { throw 'Original SHA256 mismatch' }
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          [IO.Compression.ZipFile]::ExtractToDirectory((Resolve-Path $file), "$pwd/original/upload")
+      - name: Repack manifest version with Windows SDK
+        shell: pwsh
+        run: |
+          $sdk = Get-ChildItem "${env:ProgramFiles(x86)}/Windows Kits/10/bin/*/x64/makeappx.exe" | Sort-Object FullName -Descending | Select-Object -First 1
+          if (!$sdk) { throw 'Windows SDK makeappx not found' }
+          $msix = @(Get-ChildItem original/upload -Filter *.msix)
+          $sym = @(Get-ChildItem original/upload -Filter *.appxsym)
+          if ($msix.Count -ne 1 -or $sym.Count -ne 1) { throw 'Unexpected upload topology' }
+          & $sdk.FullName unpack /p $msix[0].FullName /d original/unpacked /o
+          if ($LASTEXITCODE) { throw 'Original SDK unpack failed' }
+          Copy-Item original/unpacked working -Recurse
+          $manifest = "$pwd/working/AppxManifest.xml"
+          [xml]$xml = Get-Content $manifest -Raw
+          if ($xml.Package.Identity.Version -ne '26.9.205.0') { throw 'Unexpected original version' }
+          $xml.Package.Identity.Version = '26.9.2.0'
+          $xml.Save($manifest)
+          foreach ($footprint in @('AppxBlockMap.xml','[Content_Types].xml','AppxSignature.p7x','AppxMetadata/CodeIntegrity.cat')) {
+            $path = Join-Path working $footprint
+            if (Test-Path -LiteralPath $path) { Remove-Item -LiteralPath $path }
+          }
+          New-Item out, upload -ItemType Directory | Out-Null
+          & $sdk.FullName pack /h SHA256 /d working /p upload/AetherSDR-26.9.2.0-Windows-x64.msix /o
+          if ($LASTEXITCODE) { throw 'SDK pack failed' }
+          & $sdk.FullName unpack /p upload/AetherSDR-26.9.2.0-Windows-x64.msix /d verified /o
+          if ($LASTEXITCODE) { throw 'Repacked SDK unpack failed' }
+          [xml]$result = Get-Content verified/AppxManifest.xml -Raw
+          if ($result.Package.Identity.Version -ne '26.9.2.0') { throw 'Final version mismatch' }
+          Copy-Item $sym[0].FullName upload/AetherSDR-26.9.2.0-Windows-x64.appxsym
+          if ((Get-FileHash $sym[0].FullName).Hash -ne (Get-FileHash upload/AetherSDR-26.9.2.0-Windows-x64.appxsym).Hash) { throw 'Symbols changed' }
+          [IO.Compression.ZipFile]::ExtractToDirectory("$pwd/upload/AetherSDR-26.9.2.0-Windows-x64.appxsym", "$pwd/symbols")
+      - name: Verify identical payload and PE-PDB GUID and age matches
+        shell: pwsh
+        run: |
+          python .github/repack/audit.py original/unpacked verified symbols
+          if ($LASTEXITCODE) { throw 'Payload or symbol audit failed' }
+          [IO.Compression.ZipFile]::CreateFromDirectory("$pwd/upload", "$pwd/out/AetherSDR-26.9.2.0-Windows-x64.msixupload")
+          $hash = (Get-FileHash out/AetherSDR-26.9.2.0-Windows-x64.msixupload -Algorithm SHA256).Hash.ToLower()
+          "$hash  AetherSDR-26.9.2.0-Windows-x64.msixupload" | Set-Content out/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corrected-store-upload-26.9.2.0
+          path: out/*
+          compression-level: 0
+          retention-days: 14
