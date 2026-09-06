@@ -9,7 +9,7 @@ pa={k:v for k,v in a.items() if k not in footprints};pb={k:v for k,v in b.items(
 assert pa.keys()==pb.keys(), 'Payload file inventory changed'
 assert all(digest(v)==digest(pb[k]) for k,v in pa.items()), 'Payload bytes changed'
 def pdb_identity(p):
- d=p.read_bytes();assert d[:24]==b'Microsoft C/C++ MSF 7.00\r\n',p
+ d=p.read_bytes();assert d.startswith(b'Microsoft C/C++ MSF 7.00\r\n'),p
  block,_,_,size,_,mapblock=struct.unpack_from('<6I',d,32)
  count=(size+block-1)//block
  ids=struct.unpack_from('<'+'I'*count,d,mapblock*block)
