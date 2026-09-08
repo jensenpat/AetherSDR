@@ -1,0 +1,1465 @@
+{
+  "fixCommit": "05c68846cc0dcbfe882962a036cc09a6b6aa27da",
+  "verificationCommit": "9a8ea1b59eea5226dd6e1788608c5f9a22abc650",
+  "persistDiagnosticHead": "93bbff39cf59605bde00405a0bb4a935ba4aae38",
+  "radioModel": "FLEX-8400M",
+  "firmware": "4.2.18.41174",
+  "phases": {
+    "baseline": {
+      "binarySha256": "9e0b0b7447ee48a354e5a8cd97778550ff5ec2eb8b877327d6e536e6131ad8e3",
+      "snapshotCount": 52,
+      "uniqueLogEventCount": 1657,
+      "detectedLogGaps": [],
+      "transmittingSnapshots": 0,
+      "txPermissionEverEnabled": false,
+      "observations": [
+        {
+          "label": "original-connected",
+          "pid": 69659,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "original-40m",
+          "pid": 69659,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "baseline-seed-20m",
+          "pid": 69659,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "baseline-seed-40m",
+          "pid": 69659,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "baseline-return-20m",
+          "pid": 69659,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "baseline-before-quit",
+          "pid": 69659,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        }
+      ],
+      "band20ReturnWireIntervals": [
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        }
+      ],
+      "restoration": [],
+      "quits": [
+        {
+          "kind": "quit-complete",
+          "at": 1788875902.133591,
+          "pid": 69659,
+          "exitCode": null,
+          "limitation": "Orphaned baseline launcher; process disappearance confirmed, exit code unavailable"
+        }
+      ],
+      "incomingSqlReports": [
+        {
+          "pid": 69659,
+          "seq": 126,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 131,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 134,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 137,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 148,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 243,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 917,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 924,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 937,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1082,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1131,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1167,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1330,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1357,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1516,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1565,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 69659,
+          "seq": 1601,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        }
+      ]
+    },
+    "fixed": {
+      "binarySha256": "a785be3ed2f4904c0ac9528334024ee61ec1075bd8ddcae4166bc40b8c2dfa43",
+      "snapshotCount": 149,
+      "uniqueLogEventCount": 4158,
+      "detectedLogGaps": [],
+      "transmittingSnapshots": 0,
+      "txPermissionEverEnabled": false,
+      "observations": [
+        {
+          "label": "fixed-connect",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-40m",
+          "pid": 71740,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-0",
+          "pid": 71740,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-1",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-2",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-3",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-4",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-5",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-6",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-return-7",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-1-settled",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-40m",
+          "pid": 71740,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-0",
+          "pid": 71740,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-1",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-2",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-3",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-4",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-5",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-6",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-return-7",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "pre-restart-2-settled",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "later-cycle-auto",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 62,
+          "manualCache": 26,
+          "rxSlider": [
+            "10"
+          ],
+          "vfoSlider": [
+            "10"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "later-cycle-off",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": false,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "later-cycle-manual",
+          "pid": 71740,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "after-normal-restart",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-1-40m",
+          "pid": 71766,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-first-return-recovered",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-1-40m",
+          "pid": 71766,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-1-20m-0",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-1-20m-1",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-1-20m-2",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-2-40m",
+          "pid": 71766,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-2-20m-0",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-2-20m-1",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "post-restart-complete-2-20m-2",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": true,
+          "liveLevel": 26,
+          "manualCache": 26,
+          "rxSlider": [
+            "26"
+          ],
+          "vfoSlider": [
+            "26"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "restored-40m",
+          "pid": 71766,
+          "frequencyMHz": 7.175,
+          "mode": "LSB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        },
+        {
+          "label": "restored-20m",
+          "pid": 71766,
+          "frequencyMHz": 14.1,
+          "mode": "USB",
+          "sqlOn": false,
+          "liveLevel": 20,
+          "manualCache": 20,
+          "rxSlider": [
+            "20"
+          ],
+          "vfoSlider": [
+            "20"
+          ],
+          "vfoVisible": [
+            false
+          ]
+        }
+      ],
+      "band20ReturnWireIntervals": [
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        },
+        {
+          "request": {
+            "cmd": "shortcut",
+            "target": "band_20m"
+          },
+          "sqlCommands": []
+        }
+      ],
+      "restoration": [
+        {
+          "kind": "restoration-comparison",
+          "at": 1788876088.357035,
+          "band": "40m",
+          "differences": {}
+        },
+        {
+          "kind": "restoration-comparison",
+          "at": 1788876096.4528599,
+          "band": "20m",
+          "differences": {}
+        }
+      ],
+      "quits": [
+        {
+          "kind": "quit-complete",
+          "at": 1788875992.141121,
+          "pid": 71740,
+          "exitCode": 0
+        },
+        {
+          "kind": "quit-complete",
+          "at": 1788876097.352511,
+          "pid": 71766,
+          "exitCode": null,
+          "limitation": "Process disappearance confirmed after normal Quit; restarted child was orphaned when early sampler stopped"
+        }
+      ],
+      "incomingSqlReports": [
+        {
+          "pid": 71740,
+          "seq": 123,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 124,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 137,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 148,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 242,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 914,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 941,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1084,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1142,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1178,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1327,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1363,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1499,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1557,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71740,
+          "seq": 1593,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 125,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 126,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 139,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 150,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 242,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 914,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 941,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1087,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1136,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1172,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1327,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1363,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1502,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1551,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1587,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1744,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1771,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1916,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 1965,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2001,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2159,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2186,
+          "fields": [
+            "RF_frequency=7.175000",
+            "mode=LSB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2350,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=CW",
+            "squelch=1",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2399,
+          "fields": [
+            "mode=USB",
+            "squelch=0",
+            "squelch_level=20"
+          ]
+        },
+        {
+          "pid": 71766,
+          "seq": 2435,
+          "fields": [
+            "RF_frequency=14.100000",
+            "mode=USB",
+            "squelch=1",
+            "squelch_level=26"
+          ]
+        }
+      ]
+    }
+  }
+}
