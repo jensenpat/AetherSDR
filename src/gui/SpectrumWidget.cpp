@@ -774,10 +774,10 @@ static QString formatFreqScaleLabel(double freqMhz, int decimals)
 
 // ─── Waterfall color scheme gradient cache ────────────────────────────────────
 //
-// The five preset schemes (Default, Grayscale, Blue-Green, Fire, Plasma) used
+// The preset schemes used
 // to live as compile-time const tables.  They now resolve through ThemeManager
-// against `color.waterfall.colormap.{default,grayscale,blueGreen,fire,plasma}`
-// gradient tokens so a theme switch (or user theme override) reshapes any of
+// against the `color.waterfall.colormap.*` gradient tokens, so a theme switch
+// (or user theme override) reshapes any of
 // them.  Cached once per theme load — `intensityToRgb` and `fftDbmToRgb` hit
 // this hundreds of times per second per row, so we can't afford a token
 // lookup on every pixel.
@@ -811,6 +811,7 @@ const char* wfSchemeToken(WfColorScheme s)
     case WfColorScheme::Fire:      return "color.waterfall.colormap.fire";
     case WfColorScheme::Plasma:    return "color.waterfall.colormap.plasma";
     case WfColorScheme::Purple:    return "color.waterfall.colormap.purple";
+    case WfColorScheme::Glacier:   return "color.waterfall.colormap.glacier";
     default:                       return "color.waterfall.colormap.default";
     }
 }

@@ -70,7 +70,8 @@ private:
 
 
 // Modal dialog for editing a single linear or radial gradient token
-// (waterfall.colormap.default, .grayscale, .blueGreen, .fire, .plasma
+// (waterfall.colormap.default, .grayscale, .blueGreen, .fire, .plasma,
+// .purple, .glacier,
 // and any other gradient leaves that flatten() finds).
 //
 // Workflow:

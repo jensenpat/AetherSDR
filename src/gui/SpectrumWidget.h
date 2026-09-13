@@ -66,6 +66,7 @@ enum class WfColorScheme : int {
     Fire,          // black → red → orange → yellow → white
     Plasma,        // black → purple → magenta → orange → yellow
     Purple,        // SmartSDR "Add Purple": black→blue→green→yellow→red→purple→white
+    Glacier,       // SW auto-black 50: deep blue floor → bright blue/cyan signal
     Count          // sentinel — number of schemes
 };
 
@@ -86,6 +87,7 @@ inline const char* wfSchemeName(WfColorScheme scheme)
     case WfColorScheme::Fire:      return "Fire";
     case WfColorScheme::Plasma:    return "Plasma";
     case WfColorScheme::Purple:    return "Purple";
+    case WfColorScheme::Glacier:   return "Glacier";
     default:                       return "Default";
     }
 }

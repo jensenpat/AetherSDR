@@ -177,6 +177,18 @@ void ThemeManager::seedGeneratedDefaults()
         ThemeGradient g;
         g.type = ThemeGradient::Linear;
         g.angle = 180.0;
+        g.stops.append({0.0, QColor("#000094")});
+        g.stops.append({0.18, QColor("#0000ce")});
+        g.stops.append({0.32, QColor("#0082ff")});
+        g.stops.append({0.45, QColor("#bfeeff")});
+        g.stops.append({0.55, QColor("#ffffff")});
+        g.stops.append({1.0, QColor("#ffffff")});
+        m_tokens.insert("color.waterfall.colormap.glacier", QVariant::fromValue(g));
+    }
+    {
+        ThemeGradient g;
+        g.type = ThemeGradient::Linear;
+        g.angle = 180.0;
         g.stops.append({0.0, QColor("#000000")});
         g.stops.append({1.0, QColor("#ffffff")});
         m_tokens.insert("color.waterfall.colormap.grayscale", QVariant::fromValue(g));
