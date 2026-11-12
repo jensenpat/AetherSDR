@@ -1,0 +1,136 @@
+{
+  "nativePages": 16,
+  "nativeWindowOrder": [
+    {
+      "page": "antennas",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "appearance-behavior",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "audio",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "filters",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "network",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "peripherals",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "phone-cw",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "qrz-callsigns",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "radio",
+      "setupWindowId": 2114,
+      "setupOrder": 2,
+      "mainWindowId": 2104,
+      "mainOrder": 3
+    },
+    {
+      "page": "receive",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "serial-controllers",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "smartlink",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "time",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "transmit",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "transverters",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    },
+    {
+      "page": "usb-cables",
+      "setupWindowId": 2114,
+      "setupOrder": 3,
+      "mainWindowId": 2104,
+      "mainOrder": 4
+    }
+  ],
+  "mutationResults": [
+    {
+      "case": "eq-before",
+      "exitCode": 2
+    },
+    {
+      "case": "shackswitch-before",
+      "exitCode": 1
+    },
+    {
+      "case": "restored",
+      "exitCode": 0
+    }
+  ],
+  "regression": "9 passed; all 23 Radio Setup pages built in each of three scenarios; no transient top-level show events",
+  "radio": {
+    "connected": false,
+    "transmitting": false
+  }
+}
