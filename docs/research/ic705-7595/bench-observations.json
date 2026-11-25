@@ -1,0 +1,142 @@
+{
+  "build": "c2feaa42bf5a59ffaf41504d7199b302235384a2",
+  "hardware": "IC-705, native Wi-Fi, single BNC to dummy load",
+  "powerLimitWatts": 5,
+  "measurementSource": "internal radio meters through the automation bridge",
+  "host": "macOS 27.0.1 arm64",
+  "buildConfig": "Release, session credentials; keychain-enabled build tested separately by CTest",
+  "baseline": {
+    "elapsedSeconds": 182.62,
+    "keyWindows": 9,
+    "freshPowerSamples": 217,
+    "peakReportedWatts": 1.917,
+    "peakReportedSwr": 1,
+    "peakAlcPercent": 98.33
+  },
+  "firstRetest": {
+    "elapsedSeconds": 150.54,
+    "keyWindows": 9,
+    "freshPowerSamples": 212,
+    "peakReportedWatts": 1.944,
+    "peakReportedSwr": 1,
+    "peakAlcPercent": 100
+  },
+  "final": {
+    "elapsedSeconds": 140.92,
+    "keyWindows": 7,
+    "freshPowerSamples": 161,
+    "peakReportedWatts": 2.083,
+    "peakReportedSwr": 1,
+    "peakAlcPercent": 100
+  },
+  "finalScheduler": {
+    "timeouts": 0,
+    "meanResponseMs": 20.39,
+    "maximumResponseMs": 158,
+    "maximumSampledQueue": 42
+  },
+  "postRunScrub": {
+    "checked": 51,
+    "linked": 29,
+    "broken": 0,
+    "notTested": 22,
+    "additionalTimeouts": 0,
+    "peakQueue": 70
+  },
+  "receivePerformance": {
+    "durationSeconds": 30.62,
+    "fftFramesPerSec": 30.02,
+    "nativeWaterfallUpdatesPerSec": 30.02,
+    "gpuFramesPerSec": 25.64,
+    "measuredMainThreadMsPerSec": 30.5,
+    "hiddenWaterfallUpdatesPerSec": 0,
+    "ageMs": {
+      "audioAgeMs": {
+        "median": 8.5,
+        "max": 71
+      },
+      "spectrumAgeMs": {
+        "median": 19.5,
+        "max": 90
+      },
+      "meterAgeMs": {
+        "median": 70.5,
+        "max": 369
+      }
+    },
+    "packetLossDelta": 0,
+    "mediaDeltas": {
+      "receivedFrames": 1469760,
+      "receivedPackets": 3062,
+      "concealedFrames": 0,
+      "concealmentBlocks": 0
+    }
+  },
+  "monitorBeforeFix": {
+    "original": "16 45 00",
+    "before": "16 45 01",
+    "afterReceiveOnlyPhase": "16 45 00",
+    "phase": "tune"
+  },
+  "monitorAfterFix": {
+    "original": "16 45 00",
+    "before": "16 45 01",
+    "afterReceiveOnlyPhase": "16 45 01",
+    "phase": "tune"
+  },
+  "antennaPanel": [
+    {
+      "rxMhz": 14.2,
+      "text": "OFF",
+      "visible": true,
+      "enabled": true,
+      "toolTip": "Receive attenuator \u2014 OFF.\nClick to step through: OFF / 20 dB",
+      "panWnbBtn": {
+        "visible": true,
+        "enabled": false,
+        "toolTip": "Wideband noise blanker is unavailable on this radio."
+      },
+      "panWnbLevel": {
+        "visible": true,
+        "enabled": false,
+        "toolTip": "Wideband noise blanker is unavailable on this radio."
+      },
+      "stepped": "20 dB"
+    },
+    {
+      "rxMhz": 74.799999,
+      "text": "OFF",
+      "visible": true,
+      "enabled": true,
+      "toolTip": "Receive attenuator \u2014 OFF.\nClick to step through: OFF / 20 dB"
+    },
+    {
+      "rxMhz": 74.8,
+      "text": "OFF",
+      "visible": true,
+      "enabled": false,
+      "toolTip": "Attenuation is unavailable at the current receive frequency."
+    },
+    {
+      "rxMhz": 145.5,
+      "text": "OFF",
+      "visible": true,
+      "enabled": false,
+      "toolTip": "Attenuation is unavailable at the current receive frequency."
+    },
+    {
+      "rxMhz": 433.5,
+      "text": "OFF",
+      "visible": true,
+      "enabled": false,
+      "toolTip": "Attenuation is unavailable at the current receive frequency."
+    },
+    {
+      "rxMhz": 14.2,
+      "text": "OFF",
+      "visible": true,
+      "enabled": true,
+      "toolTip": "Receive attenuator \u2014 OFF.\nClick to step through: OFF / 20 dB"
+    }
+  ]
+}
