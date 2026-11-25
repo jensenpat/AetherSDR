@@ -1,0 +1,468 @@
+{
+  "checked": 51,
+  "linked": 29,
+  "notTested": 22,
+  "broken": 0,
+  "rows": [
+    {
+      "civ": "05",
+      "id": "freq",
+      "reachedScheduler": true,
+      "reachedWire": true,
+      "seamVerb": "setSliceFrequency",
+      "status": "LINKED",
+      "verdict": "the seam verb put this command on the wire"
+    },
+    {
+      "civ": "06",
+      "id": "mode",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceMode",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "26 00",
+      "id": "data.mode",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceMode",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "06",
+      "id": "filter",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceFilter",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "1a 03",
+      "id": "if.width",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFilter",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 07",
+      "id": "pbt.inner",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFilter",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 08",
+      "id": "pbt.outer",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFilter",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "0f",
+      "id": "repeater.shift",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceRepeaterOffsetDir",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "0d",
+      "id": "repeater.offset",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmRepeaterOffset",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "1b 00",
+      "id": "repeater.tone.frequency",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmToneValue",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "1b 02",
+      "id": "repeater.dtcs",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmDtcs",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "16 5d",
+      "id": "repeater.access.ctcss",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmToneMode",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1b 01",
+      "id": "repeater.tone.rx",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmToneRxValue",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 01",
+      "id": "af.gain",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceAudioGain",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 02",
+      "id": "rf.gain",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setPanRfGain",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 03",
+      "id": "squelch",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceSquelch",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 06",
+      "id": "nr.level",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceNoiseReduction",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 09",
+      "id": "cw.pitch",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setCwPitch",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 0a",
+      "id": "tx.power",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setTxPower",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 0b",
+      "id": "mic.gain",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setMicGain",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 0c",
+      "id": "cw.speed",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setCwSpeed",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 0d",
+      "id": "notch.pos",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceManualNotch",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 0e",
+      "id": "comp.level",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSpeechProcessor",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 12",
+      "id": "nb.level",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceNoiseBlanker",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "14 15",
+      "id": "monitor.level",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setTxMonitor",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 02",
+      "id": "preamp",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setPanPreamp",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 12",
+      "id": "agc",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceAgc",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 22",
+      "id": "nb",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceNoiseBlanker",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 40",
+      "id": "nr",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceNoiseReduction",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 41",
+      "id": "anf",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceAutoNotch",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 42",
+      "id": "repeater.tone",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setSliceFmToneMode",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "16 44",
+      "id": "comp",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSpeechProcessor",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 45",
+      "id": "monitor",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setTxMonitor",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 46",
+      "id": "vox",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setVox",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "14 16",
+      "id": "vox.gain",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setVox",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 47",
+      "id": "break.in",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setCwBreakIn",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "16 48",
+      "id": "notch",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceManualNotch",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "16 50",
+      "id": "dial.lock",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setRadioDialLock",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "11",
+      "id": "atten",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setPanAttenuator",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "1c 02",
+      "id": "xfc",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setTransmitFrequencyCheck",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "21 00",
+      "id": "rit.offset",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceRitOffset",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "21 01",
+      "id": "rit.enable",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceRitEnabled",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "21 02",
+      "id": "xit.enable",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "setSliceXitEnabled",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "1a 05",
+      "id": "mod.input.dataoff",
+      "reachedScheduler": true,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/audio.pc",
+      "status": "LINKED",
+      "verdict": "the seam verb admitted this exact command to the CI-V scheduler; wait for `civ scheduler` idle with no new timeout to prove dispatch and readback"
+    },
+    {
+      "civ": "27 15",
+      "id": "scope.span",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setPanBandwidth",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "27 19",
+      "id": "scope.reference",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/scope.reference",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1a 05",
+      "id": "tx.bandwidth.edges",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "setTxFilter",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1a 05",
+      "id": "gps.ntp.enabled",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/gps.ntp.enabled",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1a 05",
+      "id": "gps.ntp.server",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/gps.ntp.server",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1a 05",
+      "id": "gps.time.correct",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/gps.time-correction",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    },
+    {
+      "civ": "1a 07",
+      "id": "gps.ntp.access",
+      "reachedScheduler": false,
+      "reachedWire": false,
+      "seamVerb": "invokeExtension icom/gps.ntp.sync",
+      "status": "NOT-TESTED",
+      "verdict": "no safe way to re-assert this without changing the operator's setting \u2014 not a fault, not a pass"
+    }
+  ],
+  "note": "Each control is re-asserted at its CURRENT value, so nothing on the radio moves. PTT, the antenna tuner and power-off are never scrubbed. Scheduler admission is reported separately from physical dispatch; finish the proof with `civ scheduler`."
+}

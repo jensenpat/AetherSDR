@@ -1,0 +1,54 @@
+{
+  "sameProcessReconnect": {
+    "firstObservedConnectedWithFreshPayloadsSeconds": 1.954,
+    "finalSampleSeconds": 69.677,
+    "audioAgeMs": 8,
+    "spectrumAgeMs": 10,
+    "meterAgeMs": 102,
+    "rxPacketsLost": 0
+  },
+  "finalBuildFullRestart": {
+    "before": {
+      "mode": "USB",
+      "filterPreset": "FIL1",
+      "squelch": false,
+      "squelchLevel": 20,
+      "manualSquelchLevel": 20,
+      "rfPower": 20,
+      "tunePower": 10,
+      "monitor": false,
+      "voxEnable": false
+    },
+    "after": {
+      "mode": "USB",
+      "filterPreset": "FIL1",
+      "squelch": false,
+      "squelchLevel": 20,
+      "manualSquelchLevel": 20,
+      "rfPower": 20,
+      "tunePower": 10,
+      "monitor": false,
+      "voxEnable": false
+    },
+    "dialAdopted": true,
+    "streamAgesMs": {
+      "audioAgeMs": 9,
+      "spectrumAgeMs": 5,
+      "meterAgeMs": 14
+    }
+  },
+  "finalRestoration": {
+    "bridgeTxAllowed": false,
+    "initialAndRestoredSnapshotsMatch": {
+      "slices": true,
+      "pans": true,
+      "transmit": true
+    },
+    "initialAndFinalScopeMode": "Scroll-F",
+    "radioConfirmedPtt": false,
+    "rfDriveRestoredPercent": 100,
+    "operatorFilter": "FIL1",
+    "trackedStateReady": true,
+    "postDisconnectInventory": "IC-705, A4, idle, no owner"
+  }
+}

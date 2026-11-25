@@ -1,0 +1,251 @@
+{
+  "source": "app ANT panel; 12 alternating 20 dB / OFF selections at 14.200 MHz in receive",
+  "preampReadbackLatencyMs": [
+    151,
+    140,
+    120,
+    147,
+    114,
+    126,
+    116,
+    138,
+    160,
+    150,
+    151,
+    159
+  ],
+  "transactions": [
+    {
+      "attEnabled": true,
+      "preampReplyMs": 151,
+      "frames": [
+        {
+          "tMs": 121,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 151,
+          "dir": "rx",
+          "frame": "16 02 00"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 140,
+      "frames": [
+        {
+          "tMs": 94,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 140,
+          "dir": "rx",
+          "frame": "16 02 01"
+        },
+        {
+          "tMs": 796,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    },
+    {
+      "attEnabled": true,
+      "preampReplyMs": 120,
+      "frames": [
+        {
+          "tMs": 88,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 120,
+          "dir": "rx",
+          "frame": "16 02 00"
+        },
+        {
+          "tMs": 1543,
+          "dir": "rx",
+          "frame": "16 02 00"
+        },
+        {
+          "tMs": 1747,
+          "dir": "rx",
+          "frame": "11 20"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 147,
+      "frames": [
+        {
+          "tMs": 79,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 147,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    },
+    {
+      "attEnabled": true,
+      "preampReplyMs": 114,
+      "frames": [
+        {
+          "tMs": 82,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 114,
+          "dir": "rx",
+          "frame": "16 02 00"
+        },
+        {
+          "tMs": 1368,
+          "dir": "rx",
+          "frame": "16 02 00"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 126,
+      "frames": [
+        {
+          "tMs": 93,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 126,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    },
+    {
+      "attEnabled": true,
+      "preampReplyMs": 116,
+      "frames": [
+        {
+          "tMs": 91,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 116,
+          "dir": "rx",
+          "frame": "16 02 00"
+        },
+        {
+          "tMs": 424,
+          "dir": "rx",
+          "frame": "16 02 00"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 138,
+      "frames": [
+        {
+          "tMs": 109,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 138,
+          "dir": "rx",
+          "frame": "16 02 01"
+        },
+        {
+          "tMs": 1429,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    },
+    {
+      "attEnabled": true,
+      "preampReplyMs": 160,
+      "frames": [
+        {
+          "tMs": 109,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 160,
+          "dir": "rx",
+          "frame": "16 02 00"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 150,
+      "frames": [
+        {
+          "tMs": 109,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 150,
+          "dir": "rx",
+          "frame": "16 02 01"
+        },
+        {
+          "tMs": 709,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    },
+    {
+      "attEnabled": true,
+      "preampReplyMs": 151,
+      "frames": [
+        {
+          "tMs": 120,
+          "dir": "rx",
+          "frame": "11 20"
+        },
+        {
+          "tMs": 151,
+          "dir": "rx",
+          "frame": "16 02 00"
+        },
+        {
+          "tMs": 1881,
+          "dir": "rx",
+          "frame": "16 02 00"
+        }
+      ]
+    },
+    {
+      "attEnabled": false,
+      "preampReplyMs": 159,
+      "frames": [
+        {
+          "tMs": 146,
+          "dir": "rx",
+          "frame": "11 00"
+        },
+        {
+          "tMs": 159,
+          "dir": "rx",
+          "frame": "16 02 01"
+        }
+      ]
+    }
+  ]
+}
