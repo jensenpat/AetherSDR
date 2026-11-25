@@ -1,0 +1,38 @@
+[
+  {
+    "rxMhz": 14.2,
+    "before": "11 00",
+    "preamp": "16 02 00",
+    "after20dB": "11 20"
+  },
+  {
+    "rxMhz": 50.125,
+    "before": "11 00",
+    "preamp": "16 02 02",
+    "after20dB": "11 20"
+  },
+  {
+    "rxMhz": 74.799999,
+    "before": "11 00",
+    "preamp": "16 02 02",
+    "after20dB": "11 20"
+  },
+  {
+    "rxMhz": 74.8,
+    "before": "11 00",
+    "preamp": "16 02 00",
+    "after20dB": "11 00"
+  },
+  {
+    "rxMhz": 145.5,
+    "before": "11 00",
+    "preamp": "16 02 01",
+    "after20dB": "11 00"
+  },
+  {
+    "rxMhz": 433.5,
+    "before": "11 00",
+    "preamp": "16 02 01",
+    "after20dB": "11 00"
+  }
+]

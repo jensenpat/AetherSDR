@@ -1,0 +1,1001 @@
+{
+  "keyRefusals": 0,
+  "keyedRf": {
+    "confirmed": true,
+    "floorWatts": 0.0010999999940395355,
+    "forwardPowerMeterDefined": true,
+    "keyedWindows": 4,
+    "maxWattsWhileKeyed": 1.9166666269302368
+  },
+  "kind": "radio-bringup-diagnostic",
+  "manualChecks": [
+    {
+      "check": "Sideband against an unrelated receiver",
+      "why": "The sideband stage above demodulates our own transmission, which is a different path from the panadapter but still our own code. Two errors in the same direction would agree. Tune a separate radio to the same frequency and confirm the mode matches."
+    },
+    {
+      "check": "Audio quality and intelligibility",
+      "why": "Level and frequency can both be correct while the audio is clipped, aliased or unintelligible. Nothing here measures distortion. Listen on another receiver."
+    },
+    {
+      "check": "Occupied bandwidth and splatter",
+      "why": "A modulator can hit 85 dB opposite-sideband suppression and still radiate outside its passband \u2014 that happened here, and only a deliberate out-of-band probe found it. Check the signal width on a second receiver's panadapter."
+    },
+    {
+      "check": "Harmonics and spurs",
+      "why": "The receive window is a few tens of kHz wide and centred on the transmit frequency, so it cannot see a harmonic by construction."
+    },
+    {
+      "check": "ALC behaviour on real speech",
+      "why": "A steady tone cannot reveal pumping between words or a first syllable lost to the attack. Speak, and listen."
+    },
+    {
+      "check": "Long-transmission thermal behaviour",
+      "why": "These stages key for a few seconds each. A net-length transmission is a different question for the PA."
+    },
+    {
+      "check": "Panadapter versus demodulator, with a signal OFF centre",
+      "why": "They are independent consumers of the same buffer and can disagree; when they did, each had the other's convention. A mirror is invisible on the pan centre, so the signal must be off-axis. This is the check that found the receive inversion, and it is not yet automated."
+    },
+    {
+      "check": "Spots from a third party in the mode under test",
+      "why": "PSK Reporter or a cluster spot is evidence that cannot come from a self-consistent loop. The receive bring-up ended with 63 spots on 14.074 DIGU \u2014 the first proof that was not our own code agreeing with itself."
+    }
+  ],
+  "note": "Diagnostic only \u2014 this deliberately does not pass or fail. Read the concerns, then the measurements.",
+  "ok": true,
+  "phase": "all",
+  "radio": {
+    "family": "icom",
+    "frequencyMhz": 14.2,
+    "mode": "USB",
+    "rfPowerClampedFromPercent": null,
+    "rfStimulusDbfs": -20,
+    "txPowerCeilingPercent": 25
+  },
+  "stages": [
+    {
+      "concern": "these modes did not survive a round trip \u2014 came back as another spelling, twice: CWU->CW, NFM->FM, RTTY->DIGL. Either a deliberate alias collapse onto the spelling the mode menu carries (on the HL2, hl2::canonicalOfferedMode does CWU->CW and NFM->FM, and that is correct) or a fallback that publishes its default; the passband fingerprint beside each tells them apart \u2014 an alias keeps its own window, a fallback takes the default mode's; refused: SAM. The slice stayed on the mode it was on, which is what a backend does when it declines a mode it cannot demodulate (the HL2 refuses RTTY: it is not in hl2::knownModeStrings). Honest, but a client that offers the mode gets no change",
+      "id": "mode-map",
+      "measured": {
+        "AM": {
+          "passband": "-4500..4500",
+          "readback": "AM"
+        },
+        "CW": {
+          "passband": "-600..600",
+          "readback": "CW"
+        },
+        "CWL": {
+          "passband": "-600..600",
+          "readback": "CWL"
+        },
+        "CWU": {
+          "class": "alias",
+          "passband": "-600..600",
+          "readback": "CW",
+          "reprobeFrom": "USB",
+          "reprobeReadback": "CW"
+        },
+        "DIGL": {
+          "passband": "-3150..-150",
+          "readback": "DIGL"
+        },
+        "DIGU": {
+          "passband": "150..3150",
+          "readback": "DIGU"
+        },
+        "FM": {
+          "passband": "-7500..7500",
+          "readback": "FM"
+        },
+        "LSB": {
+          "passband": "-3300..-300",
+          "readback": "LSB"
+        },
+        "NFM": {
+          "class": "alias",
+          "passband": "-7500..7500",
+          "readback": "FM",
+          "reprobeFrom": "USB",
+          "reprobeReadback": "FM"
+        },
+        "RTTY": {
+          "class": "alias",
+          "passband": "-3150..-150",
+          "readback": "DIGL",
+          "reprobeFrom": "USB",
+          "reprobeReadback": "DIGL"
+        },
+        "SAM": {
+          "class": "refused",
+          "passband": "-4500..4500",
+          "readback": "AM",
+          "reprobeFrom": "USB",
+          "reprobeReadback": "USB"
+        },
+        "USB": {
+          "passband": "-1802..1798",
+          "readback": "USB"
+        }
+      },
+      "observation": "READBACK IS NOT PROOF. The slice keeps whatever string the BACKEND publishes, which for most modes is the string it was given \u2014 so every mode can come back clean while the backend maps only some of them and silently demodulates the rest as its default. A readback that DIFFERS is not automatically a fault either: a backend may collapse an alias onto the spelling its mode menu carries, or refuse a mode and stay where it was. Each differing mode is asked for again from a known mode to separate the two (`class`); compare each passband against the fallback mode's \u2014 an exact match is a hint, and the only one visible from outside the backend.",
+      "reference": "docs/HERMES.md 15.7",
+      "title": "Every mode the app can emit survives a round trip"
+    },
+    {
+      "id": "tuning",
+      "measured": {
+        "step0_14.2000MHz": {
+          "errorHz": 0,
+          "readbackMhz": 14.2,
+          "requestedMhz": 14.2
+        },
+        "step1_15.2000MHz": {
+          "errorHz": 0,
+          "readbackMhz": 15.2,
+          "requestedMhz": 15.2
+        },
+        "step2_7.1000MHz": {
+          "errorHz": 0,
+          "readbackMhz": 7.1,
+          "requestedMhz": 7.1
+        },
+        "step3_3.7000MHz": {
+          "errorHz": 0,
+          "readbackMhz": 3.7,
+          "requestedMhz": 3.7
+        }
+      },
+      "observation": "Several frequencies across bands, including ones far enough apart to force a DDC re-centre. Readback only proves the model agrees \u2014 a radio that reports no VFO cannot be asked where it really is.",
+      "reference": "docs/HERMES.md 14.1 \u2014 connect-time state",
+      "title": "The dial goes where it is told, across bands"
+    },
+    {
+      "id": "zero-shift",
+      "measured": {
+        "dialMhz": 9.9985,
+        "intendedMhz": 9.9985,
+        "method": "tuned 3 MHz away to force an NCO jump, then landed on the target so the NCO follows and the slice shift is exactly zero"
+      },
+      "observation": "Any handedness measurement taken at a non-zero shift can be corrected by a second, opposite error. This puts the radio in the one geometry where that cannot happen \u2014 do the sideband checks from here.",
+      "reference": "docs/HERMES.md 15.4",
+      "title": "Establish the zero-shift geometry"
+    },
+    {
+      "concern": "INCONCLUSIVE: no mode recovered the reference tone. With no antenna or no signal at the reference frequency every mode reads the noise floor, so this stage needs a real carrier present",
+      "id": "rx-sidebands",
+      "measured": {
+        "DIGL": {
+          "agc": {
+            "mode": "slow",
+            "offLevel": 10,
+            "threshold": 65
+          },
+          "frames": 72000,
+          "overallRmsDb": -39.35830284978473,
+          "recovered": false,
+          "sampleRateHz": 48000,
+          "toneAboveBackgroundDb": -28.24426241049313,
+          "toneAtOffsetDb": -70.61936700694754,
+          "toneSearchSpanHz": 25
+        },
+        "DIGU": {
+          "agc": {
+            "mode": "slow",
+            "offLevel": 10,
+            "threshold": 65
+          },
+          "frames": 72000,
+          "overallRmsDb": -39.21446195562797,
+          "recovered": false,
+          "sampleRateHz": 48000,
+          "toneAboveBackgroundDb": -29.36624452500466,
+          "toneAtOffsetDb": -71.59602880740994,
+          "toneSearchSpanHz": 25
+        },
+        "LSB": {
+          "agc": {
+            "mode": "slow",
+            "offLevel": 10,
+            "threshold": 65
+          },
+          "frames": 72000,
+          "overallRmsDb": -39.54707247007123,
+          "recovered": false,
+          "sampleRateHz": 48000,
+          "toneAboveBackgroundDb": -31.061716115055226,
+          "toneAtOffsetDb": -73.62248825826505,
+          "toneSearchSpanHz": 25
+        },
+        "USB": {
+          "agc": {
+            "mode": "slow",
+            "offLevel": 10,
+            "threshold": 65
+          },
+          "frames": 72000,
+          "overallRmsDb": -39.64630500132174,
+          "recovered": false,
+          "sampleRateHz": 48000,
+          "toneAboveBackgroundDb": -27.897627244075537,
+          "toneAtOffsetDb": -70.56127377138701,
+          "toneSearchSpanHz": 25
+        },
+        "summary": {
+          "carrierAboveDial": true,
+          "pattern": "none-recovered",
+          "recoveredThresholdDb": -15,
+          "silentModes": []
+        }
+      },
+      "observation": "With the dial parked so a known carrier sits at the configured offset, the modes whose passband covers that side should recover the tone and the other two should not. USB and DIGU should agree with each other, LSB and DIGL likewise, and the two pairs should disagree \u2014 if all four recover it, the dial is probably not where this stage thinks it is. Each mode is judged by how far the tone stands above the rest of its own audio (toneAboveBackgroundDb), not by its absolute level: a backend may run a mode with AGC off by design (recorded per mode under agc), and that mode then plays tens of dB quieter while hearing the carrier just as well.",
+      "reference": "docs/HERMES.md 15.3, 15.4",
+      "title": "All four SSB-family modes against a known carrier"
+    },
+    {
+      "concern": "NOT YET AUTOMATED \u2014 needs a spectrum tap through the seam. Until then this is an operator check, and it is the one that found the receive inversion",
+      "id": "consumer-agreement",
+      "measured": {
+        "dialOffsetHz": 1500,
+        "note": "Requires a signal OFF the pan centre. A mirror is invisible on its own axis, which is how a live sideband sweep once confirmed 'all four modes correct' while the display was plainly mirrored.",
+        "referenceCarrierMhz": 10
+      },
+      "observation": "Park a known carrier off-centre, then compare where the panadapter draws it against which sideband recovers it. They are independent consumers and can disagree.",
+      "reference": "docs/HERMES.md 15.5",
+      "title": "Panadapter and demodulator agree on which side a signal is"
+    },
+    {
+      "id": "passband-after-mode-change",
+      "measured": {
+        "cwPassband": "-600..600",
+        "cwWidthHz": 1200,
+        "diguPassband": "150..3150",
+        "diguWidthHz": 3000
+      },
+      "observation": "CW then DIGU is the ordering that exposed this: the narrow window survived into a wide mode and the decoder saw nothing.",
+      "reference": "docs/HERMES.md 15.7",
+      "title": "The passband follows a mode change"
+    },
+    {
+      "id": "control-plane",
+      "measured": {
+        "readbackMhz": 14.2,
+        "readbackMode": "USB",
+        "requestedMhz": 14.2,
+        "requestedMode": "USB"
+      },
+      "observation": "Readback only proves the MODEL agrees. A radio that reports no VFO cannot be asked what it is really tuned to, so the app is authoritative and anything it fails to push is inherited from the previous session \u2014 that is how a VFO once read 10 MHz while the radio transmitted on 14.",
+      "reference": "docs/HERMES.md 14.1 defect on connect-time state",
+      "title": "Frequency and mode readback"
+    },
+    {
+      "id": "preconditions",
+      "measured": {
+        "canTransmit": true,
+        "connected": true,
+        "family": "icom",
+        "hostModulation": false,
+        "micSelection": "PC",
+        "txAudioStreaming": true
+      },
+      "observation": "What the app believes about itself before any key.",
+      "reference": "docs/HERMES.md 14.1 defects 1 and 2",
+      "title": "Backend, transmit gate and audio capture"
+    },
+    {
+      "concern": "no audio reached the modulator. The chain is broken ABOVE the DSP: either capture is not running, or the TX audio callback is gated on something this backend never satisfies",
+      "id": "dsp-liveness",
+      "measured": {
+        "sLevelDbm": -127,
+        "sLevelDbmAgeMs": 2733,
+        "swr": 1,
+        "swrAgeMs": 171
+      },
+      "observation": "Mic peak is measured pre-ALC, so it reports the level actually arriving rather than the ALC's success.",
+      "reference": "docs/HERMES.md 14.1 defects 1 and 2",
+      "title": "Audio reaches the modulator"
+    },
+    {
+      "concern": "METER-DEPENDENT: no PA temperature meter on this radio, so dissipation could not be checked. Every other reading here can be faked by a wiring error; this was the one that could not",
+      "id": "rf",
+      "measured": {
+        "afterUnkey": {
+          "sLevelDbm": -127,
+          "sLevelDbmAgeMs": 115,
+          "swr": 1,
+          "swrAgeMs": 1157
+        },
+        "backendSwrGate": {
+          "clearsThisKey": null,
+          "counts": null,
+          "forwardPeakCounts": null
+        },
+        "drivePercentWhileKeyed": 20,
+        "idle": {
+          "sLevelDbm": -127,
+          "sLevelDbmAgeMs": 181,
+          "swr": 1,
+          "swrAgeMs": 757
+        },
+        "keyed": {
+          "sLevelDbm": -127,
+          "sLevelDbmAgeMs": 2561,
+          "swr": 1,
+          "swrAgeMs": 131
+        },
+        "paTempAvailable": false,
+        "stimulusToneDbfs": -20,
+        "swrAvailable": true,
+        "swrResult": "reading"
+      },
+      "meterDependent": true,
+      "observation": "SWR is meaningful uncalibrated because it is a ratio from one converter. Absolute power is NOT reported: raw counts dressed up as watts would be a confident lie.",
+      "reference": "docs/HERMES.md 14.1 defects 3 and 4",
+      "title": "The radio actually produces RF"
+    },
+    {
+      "concern": "the radio reported forward power while keyed with NO audio. In SSB that is a carrier \u2014 most likely a DC offset in the modulator, or audio left over from a previous transmission that was not flushed",
+      "id": "carrier-suppression",
+      "measured": {
+        "keyedWithNoAudio": {
+          "sLevelDbm": -127,
+          "sLevelDbmAgeMs": 2543,
+          "swr": 1,
+          "swrAgeMs": 290
+        },
+        "micGainDuringTest": 0,
+        "micGainRestoredTo": 100
+      },
+      "observation": "SSB should be silent when the operator is. A reading here is either a DC-offset carrier or an unflushed transmit queue.",
+      "reference": "docs/HERMES.md 14.1; queue flush on unkey",
+      "title": "Keyed with no audio produces no carrier"
+    },
+    {
+      "id": "sideband",
+      "measured": {
+        "demodMatched": {
+          "frames": 144000,
+          "mode": "USB",
+          "overallRmsDb": -7.01006146893302,
+          "sampleRateHz": 48000,
+          "tone1kDb": -10.904524889248657
+        },
+        "demodOpposite": {
+          "frames": 136320,
+          "mode": "LSB",
+          "overallRmsDb": -7.119565622945579,
+          "sampleRateHz": 48000,
+          "tone1kDb": -11.120241120970169
+        },
+        "legsAreMatchedPairsNotOpposites": true,
+        "matchedMinusOppositeDb": 0.21571623172151178,
+        "receiverSaturated": false,
+        "recoveredMatched": true,
+        "recoveredOpposite": true,
+        "recoveredToneFloorDb": -55,
+        "sampleRateAssumed": false,
+        "sampleRateHz": 48000,
+        "transmitMode": "USB",
+        "txRxSidebandAgree": true
+      },
+      "observation": "WHAT THIS CAN AND CANNOT SEE. Setting the slice mode drives the transmit chain and the receive chain together (Hl2Backend::setSliceMode: 'the transmit sideband follows the slice'), so both legs here are matched pairs \u2014 TX-USB/RX-USB and TX-LSB/RX-LSB \u2014 and the older matched-versus-opposite COMPARISON could not discriminate anything: with the transmitter correct both legs recover the tone, and with it inverted both go silent. The difference between them was noise either way.\n\nWhat IS observable is the absolute level in both legs, and it answers a real question: do the transmitter and the demodulator agree about which side of the carrier a sideband is on. A transmit-only inversion silences both.\n\nA SHARED inversion \u2014 both chains wrong in the same direction \u2014 is invisible here BY CONSTRUCTION, which is docs/HERMES.md 1.1 recurring one level up: this check was built to catch convention errors and still shares a convention with its subject. Only an unrelated receiver settles it, and that check is listed in manualChecks.",
+      "reference": "docs/HERMES.md 14.6; 1.1 \u2014 a shared convention cannot self-check",
+      "title": "Transmit/receive sideband AGREEMENT \u2014 not absolute correctness"
+    },
+    {
+      "concern": "receive audio was still flowing during transmit. The operator will hear their own carrier as fuzz and their own voice as feedback, and with an open microphone that closes an acoustic loop that corrupts the transmitted audio",
+      "id": "lifecycle",
+      "measured": {
+        "keyConfirmed": true,
+        "rxBytesAfterUnkey": 460800,
+        "rxBytesBeforeKey": 483840,
+        "rxBytesDuringTx": 470704
+      },
+      "observation": "Zero bytes during transmit is what is wanted. A non-zero count AFTER unkey that greatly exceeds the before-key rate would indicate a drained backlog rather than a resumed stream.",
+      "reference": "docs/HERMES.md 14.1; RX mute at the demodulator",
+      "title": "Receive muting across the transmit cycle"
+    },
+    {
+      "id": "control-domain",
+      "measured": {
+        "speechProcessorLevel": {
+          "enabledForSweep": false,
+          "maximum": 10,
+          "notHeld": [],
+          "probes": [
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 6500,
+              "landedAt": 0,
+              "written": 0
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 1,
+              "written": 1
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 2,
+              "written": 2
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 3,
+              "written": 3
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 4,
+              "written": 4
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 5,
+              "written": 5
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 6,
+              "written": 6
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 7,
+              "written": 7
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 8,
+              "written": 8
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 9,
+              "written": 9
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 6500,
+              "landedAt": 10,
+              "written": 10
+            }
+          ]
+        },
+        "squelch": {
+          "autoSquelchEngaged": false,
+          "maximum": 100,
+          "notHeld": [],
+          "probes": [
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 6500,
+              "landedAt": 0,
+              "written": 0
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 1,
+              "written": 1
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 25,
+              "written": 25
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 50,
+              "written": 50
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 75,
+              "written": 75
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 1200,
+              "landedAt": 99,
+              "written": 99
+            },
+            {
+              "agreedAtMs": 100,
+              "departedAtMs": null,
+              "held": true,
+              "heldMs": 6500,
+              "landedAt": 100,
+              "written": 100
+            }
+          ],
+          "sampleEncoding": "level while on, -1 while off"
+        }
+      },
+      "observation": "Every published value is written through the operator's setter and watched until the radio answers; both ends of the range are held through two periodic polls. A value that reads back elsewhere is decoded in a different domain from the one it was written in, and the next write is built from it.",
+      "reference": "docs/CERTIFICATION.md 1.41",
+      "title": "A scaled control reads back where it was written"
+    },
+    {
+      "id": "front-end-interlock",
+      "measured": {
+        "budgetMs": 500,
+        "coupledChanges": 4,
+        "exercised": true,
+        "restored": true,
+        "transitions": [
+          {
+            "coupled": "attenuator",
+            "coupledAfter": 0,
+            "coupledBefore": 0,
+            "coupledSettledMs": null,
+            "ownSettledMs": 100,
+            "ownStep": 1,
+            "step": 1,
+            "wrote": "preamp"
+          },
+          {
+            "coupled": "preamp",
+            "coupledAfter": 0,
+            "coupledBefore": 1,
+            "coupledSettledMs": 200,
+            "ownSettledMs": 100,
+            "ownStep": 1,
+            "step": 1,
+            "wrote": "attenuator"
+          },
+          {
+            "coupled": "preamp",
+            "coupledAfter": 1,
+            "coupledBefore": 0,
+            "coupledSettledMs": 300,
+            "ownSettledMs": 100,
+            "ownStep": 0,
+            "step": 0,
+            "wrote": "attenuator"
+          },
+          {
+            "coupled": "preamp",
+            "coupledAfter": 0,
+            "coupledBefore": 1,
+            "coupledSettledMs": 200,
+            "ownSettledMs": 100,
+            "ownStep": 1,
+            "step": 1,
+            "wrote": "attenuator"
+          },
+          {
+            "coupled": "attenuator",
+            "coupledAfter": 0,
+            "coupledBefore": 1,
+            "coupledSettledMs": 200,
+            "ownSettledMs": 100,
+            "ownStep": 1,
+            "step": 1,
+            "wrote": "preamp"
+          }
+        ],
+        "watchMs": 4000
+      },
+      "observation": "Each front-end write is watched for 4 s. Where the radio moved the other stage, the time it showed on the pan says whether the backend read it after the write or waited for a poll. No coupled change at all is reported, not judged: not every radio interlocks.",
+      "reference": "docs/CERTIFICATION.md 1.42",
+      "title": "Coupled front-end controls show what the radio did"
+    },
+    {
+      "concern": "the radio's squelch closed on this carrier at level 50, where the SQL line is drawn at -110.0 dB, but the carrier peaks at -140.0 dB on the pan: the line is 30.0 dB above the gate; Auto SQL is offered, but the radio gates band noise 30.0 dB above the pan floor: at its widest 20 dB margin Auto leaves the noise open",
+      "id": "squelch-scale",
+      "measured": {
+        "attenuator": 0,
+        "autoSquelch": true,
+        "autoSquelchCheck": {
+          "dialMhz": 10.0085,
+          "noiseGateAboveFloorDb": 30,
+          "noiseGateConfirmed": true,
+          "noiseGateLevel": 50,
+          "openAudioDb": -39.597284312421635,
+          "panFloorDb": -140,
+          "probes": [
+            {
+              "audioDb": -240,
+              "closed": true,
+              "fromClosed": true,
+              "level": 100
+            },
+            {
+              "audioDb": -240,
+              "closed": true,
+              "fromClosed": true,
+              "level": 50
+            },
+            {
+              "audioDb": -39.60842336873694,
+              "closed": false,
+              "fromClosed": true,
+              "level": 25
+            },
+            {
+              "audioDb": -39.71410365324998,
+              "closed": false,
+              "fromClosed": true,
+              "level": 38
+            },
+            {
+              "audioDb": -39.54183599803224,
+              "closed": false,
+              "fromClosed": true,
+              "level": 44
+            },
+            {
+              "audioDb": -39.630563845342856,
+              "closed": false,
+              "fromClosed": true,
+              "level": 47
+            },
+            {
+              "audioDb": -39.54880382123526,
+              "closed": false,
+              "fromClosed": true,
+              "level": 49
+            },
+            {
+              "audioDb": -240,
+              "closed": true,
+              "fromClosed": true,
+              "level": 51
+            },
+            {
+              "audioDb": -39.434996810459076,
+              "closed": false,
+              "fromClosed": true,
+              "level": 49
+            }
+          ]
+        },
+        "autoSquelchEngaged": false,
+        "carrierMhz": 10,
+        "carrierPanPeakDb": -140,
+        "carrierProbes": [
+          {
+            "audioDb": -240,
+            "closed": true,
+            "fromClosed": true,
+            "level": 100
+          },
+          {
+            "audioDb": -240,
+            "closed": true,
+            "fromClosed": true,
+            "level": 50
+          },
+          {
+            "audioDb": -39.661903533371046,
+            "closed": false,
+            "fromClosed": true,
+            "level": 25
+          },
+          {
+            "audioDb": -39.38620280293577,
+            "closed": false,
+            "fromClosed": true,
+            "level": 38
+          },
+          {
+            "audioDb": -39.61745986207454,
+            "closed": false,
+            "fromClosed": true,
+            "level": 44
+          },
+          {
+            "audioDb": -39.38461222504551,
+            "closed": false,
+            "fromClosed": true,
+            "level": 47
+          },
+          {
+            "audioDb": -39.64252395465437,
+            "closed": false,
+            "fromClosed": true,
+            "level": 49
+          },
+          {
+            "audioDb": -240,
+            "closed": true,
+            "fromClosed": true,
+            "level": 51
+          },
+          {
+            "audioDb": -39.7054278348468,
+            "closed": false,
+            "fromClosed": true,
+            "level": 49
+          }
+        ],
+        "dbPerStep": 1,
+        "dialMhz": 9.9985,
+        "gateConfirmed": true,
+        "gateLevel": 50,
+        "lineAtGateDb": -110,
+        "lineMinusCarrierDb": 30,
+        "lineMinusSLevelDb": 17,
+        "mode": "USB",
+        "offsetDb": -160,
+        "openAudioDb": -39.79587996837301,
+        "panFloorDb": -140,
+        "preamp": 1,
+        "published": true,
+        "sLevelDbm": -127,
+        "sLevelMinusCarrierDb": 13,
+        "toleranceDb": 6
+      },
+      "observation": "Binary-search the squelch level at which the audio from a steady carrier stops, each probe approached from a gate heard closed so a squelch tail cannot carry one probe into the next, then compare the published line at that level with the carrier's pan peak. Report the carrier's S-meter reading too: above S9 a correct record can still sit several dB off. lineMinusSLevelDb is the line less the S-meter, not the scale error: it includes any gain the pan gives a tone over its power (6.02 dB on the HL2). Only lineMinusCarrierDb is judged.",
+      "reference": "docs/CERTIFICATION.md 1.43",
+      "title": "The SQL line sits where the radio's gate closes"
+    },
+    {
+      "concern": "no fresh mic peak reading while transmitting a tone",
+      "id": "meter-scale",
+      "measured": {
+        "injectedToneDbfs": -20,
+        "keyConfirmed": true,
+        "keyedRfConfirmed": true,
+        "maxFwdWattsWhileKeyed": 1.8888888359069824,
+        "micPeakDbfs": null,
+        "micPeakErrorDb": null,
+        "micPeakStale": false,
+        "swr": 1,
+        "swrStale": false
+      },
+      "observation": "Checks with a known answer: an injected tone should read its own level on the mic peak meter, and a dummy load should read near 1.0:1. Absolute POWER is deliberately not checked \u2014 the counts are uncalibrated and presenting them as watts is the error this project already avoided once.",
+      "reference": "docs/HERMES.md 14.4; SWR gating and the dB reference",
+      "title": "Meters read the right NUMBER, not just a number"
+    },
+    {
+      "concern": "no mic peak reading \u2014 cannot certify mic gain by effect",
+      "id": "control-effect",
+      "measured": {
+        "agcThresholdAfter": 65,
+        "agcThresholdBefore": 65,
+        "agcThresholdExpectedDelta": 0,
+        "autoRfGainSuspended": false,
+        "micGain100Dbfs": -999,
+        "micGain50Dbfs": -999,
+        "micGainDeltaDb": 0,
+        "micGainExpectedDb": -6.02,
+        "rfGainEchoedDb": 92,
+        "rfGainExercised": true,
+        "rfGainReachedBackend": true,
+        "rfGainRequestedDb": 92,
+        "rfGainStartDb": 100,
+        "rfGainStepDb": -8,
+        "rfPowerExercised": false,
+        "sLevelAfterDbm": -127,
+        "sLevelBeforeDbm": -127,
+        "sLevelDeltaCaveat": "a delta near 8 dB has two causes that this measurement cannot separate: the LNA register never took the value, or the reading is dominated by converter noise that does not rise with the gain. Only the raw pre-reference dBFS distinguishes them and the seam does not expose it",
+        "sLevelDeltaDb": 0,
+        "sLevelDeltaIfRegisterNotWrittenDb": 8,
+        "sLevelDeltaIsConclusive": false,
+        "sLevelExpectedDeltaDb": 0
+      },
+      "observation": "Halving a linear gain is -6.02 dB. That is arithmetic rather than a property of this radio, which is what makes it a threshold that transfers to hardware nobody has characterised yet. The RF gain check is the same idea against a different invariant: the display reference tracks the commanded gain, so the S-meter must not move at all, and the amount it moves if the register was never written is known exactly.",
+      "reference": "docs/radio-certification.md \u2014 Controls",
+      "title": "Controls are certified by their effect, not readback"
+    },
+    {
+      "concern": "the expected-meter table is Hermes-Lite 2 specific and this radio reports family 'icom', so no expectation was applied. The per-meter defined/everFed readings below are still measured and valid; add a family column (docs/CERTIFICATION.md 2.1 \u2014 radio profile) to get an inventory verdict on this radio",
+      "id": "meter-inventory",
+      "measured": {
+        "RAD:+13.8A": {
+          "acceptedUnits": "Volts",
+          "ageMs": 1219,
+          "declaredUnit": "Volts",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": false,
+          "needsForwardPower": false,
+          "needsKey": false,
+          "note": "no supply telemetry on this radio",
+          "unitDisagrees": false
+        },
+        "RAD:PATEMP": {
+          "acceptedUnits": "degC",
+          "ageMs": -1,
+          "declaredUnit": "",
+          "defined": false,
+          "everFed": false,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": false,
+          "note": "rise under key is the check, not the value",
+          "unitDisagrees": false
+        },
+        "SLC:LEVEL": {
+          "acceptedUnits": "dBm",
+          "ageMs": 24,
+          "declaredUnit": "dBm",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": false,
+          "note": "receive signal level",
+          "unitDisagrees": false
+        },
+        "TX:ALC": {
+          "acceptedUnits": "dBFS,Percent",
+          "ageMs": 3699,
+          "declaredUnit": "Percent",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": true,
+          "note": "host ALC; MeterModel::swAlc() consumes it and the Phone/CW ALC gauges render it",
+          "unitDisagrees": false
+        },
+        "TX:ALCGAIN": {
+          "acceptedUnits": "dB",
+          "ageMs": -1,
+          "declaredUnit": "",
+          "defined": false,
+          "everFed": false,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": true,
+          "note": "gain the host ALC is applying, in dB; MeterModel::alcGainDb() consumes it and no GUI surface renders it yet (#5636)",
+          "unitDisagrees": false
+        },
+        "TX:COMPPEAK": {
+          "acceptedUnits": "dB",
+          "ageMs": 3621,
+          "declaredUnit": "dB",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": true,
+          "note": "host speech processor, polled onto the meter at 20 Hz; reads 0 with PROC off, which is a value and not a silence",
+          "unitDisagrees": false
+        },
+        "TX:FWDPWR": {
+          "acceptedUnits": "Watts,dBm",
+          "ageMs": 3456,
+          "declaredUnit": "Watts",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": true,
+          "needsKey": true,
+          "note": "published in dBm as wattsToDbm(directionalWatts(raw)) through the peak hold; the reference curve is uncalibrated, the meter is not absent",
+          "unitDisagrees": false
+        },
+        "TX:MICPEAK": {
+          "acceptedUnits": "dBFS",
+          "ageMs": -1,
+          "declaredUnit": "",
+          "defined": false,
+          "everFed": false,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": false,
+          "needsKey": true,
+          "note": "pre-ALC microphone peak; host-side, so a zero-drive key still feeds it",
+          "unitDisagrees": false
+        },
+        "TX:REFPWR": {
+          "acceptedUnits": "Watts,dBm",
+          "ageMs": -1,
+          "declaredUnit": "",
+          "defined": false,
+          "everFed": false,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": true,
+          "needsKey": true,
+          "note": "published in dBm as wattsToDbm(directionalWatts(raw)); same uncalibrated curve as FWDPWR",
+          "unitDisagrees": false
+        },
+        "TX:SWR": {
+          "acceptedUnits": "SWR",
+          "ageMs": 3709,
+          "declaredUnit": "SWR",
+          "defined": true,
+          "everFed": true,
+          "expectedOnHl2Class": true,
+          "needsForwardPower": true,
+          "needsKey": true,
+          "note": "ratio - meaningful uncalibrated, but only published above the forward-power floor",
+          "unitDisagrees": false
+        },
+        "asRendered": {
+          "alcAgeMs": 228,
+          "alcDbfs": -0.33333301544189453,
+          "alcLive": true,
+          "alcUnit": "Percent",
+          "alcValue": 98.33333587646484,
+          "fwdPowerAgeMs": 113,
+          "fwdPowerLive": true,
+          "fwdPowerWatts": 1.8888888359069824,
+          "sampledWhileKeyed": true,
+          "swr": 1,
+          "swrAgeMs": 48,
+          "swrLive": true
+        },
+        "asRenderedUnkeyed": {
+          "alcAgeMs": 3699,
+          "alcDbfs": null,
+          "alcLive": false,
+          "alcUnit": "Percent",
+          "alcValue": null,
+          "fwdPowerAgeMs": 3456,
+          "fwdPowerLive": false,
+          "fwdPowerWatts": null,
+          "swr": null,
+          "swrAgeMs": 3709,
+          "swrLive": false
+        },
+        "expectationsApplied": false,
+        "keyedRf": {
+          "backendSwrGateClearsWhileKeyed": null,
+          "backendSwrGateCounts": null,
+          "confirmed": true,
+          "floorWatts": 0.0010999999940395355,
+          "forwardPowerMeterDefined": true,
+          "freshForwardPowerSamples": 4,
+          "keyRefusals": 0,
+          "keyedWindows": 4,
+          "maxDrivePercentWhileKeyed": 20,
+          "maxForwardCountsWhileKeyed": null,
+          "maxWattsWhileKeyed": 1.9166666269302368
+        }
+      },
+      "observation": "Definition and delivery are separate wires and were connected separately. A defined meter that never updates is indistinguishable from a real reading of nothing \u2014 and from a meter that was never given anything to measure, which is why the RF-dependent rows are only judged once a keyed stage has been confirmed to produce forward power.",
+      "reference": "docs/HERMES.md 14.4 \u2014 the orphaned meter seam",
+      "title": "Meters exist and actually receive values"
+    }
+  ]
+}
